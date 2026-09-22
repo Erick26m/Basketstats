@@ -54,4 +54,4 @@ Stephen Curry,Warriors,Base,38,26.4,5.1,4.5
 Luka Doncic,Lakers,Base,27,28.3,8.2,8.1
 Nikola Jokic,Nuggets,Centro,31,27.1,9.0,12.4
 Jayson Tatum,Celtics,Alero,28,26.8,4.9,8.3
-Giannis Antetokounmpo,Bucks,Ala-Pivot,31,30.2,6.3,11.5
+Giannis Antetokounmpo,Heat,Ala-Pivot,31,30.2,6.3,11.5
