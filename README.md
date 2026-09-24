@@ -50,20 +50,8 @@ Stephen Curry,Warriors,Base,38,26.4,5.1,4.5
 Luka Doncic,Lakers,Base,27,28.3,8.2,8.1
 Nikola Jokic,Nuggets,Centro,31,27.1,9.0,12.4
 Jayson Tatum,Celtics,Alero,28,26.8,4.9,8.3
-Giannis Antetokounmpo,Bucks,Ala-Pivot,31,30.2,6.3,11.5
+Giannis Antetokounmpo,Heat,Ala-Pivot,31,30.2,6.3,11.5
 ~~~
-
-Los campos representan:
-
-- `nombre`: nombre del jugador.
-- `equipo`: equipo al que pertenece.
-- `posicion`: posición en la que juega.
-- `edad`: edad del jugador.
-- `puntos`: promedio de puntos por partido.
-- `asistencias`: promedio de asistencias por partido.
-- `rebotes`: promedio de rebotes por partido.
-
-Además de los datos cargados desde el archivo, el usuario puede ingresar la información de un nuevo jugador desde el menú del programa.
 
 ## Descripción de las salidas del avance de proyecto
 
