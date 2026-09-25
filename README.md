@@ -93,14 +93,12 @@ En el proyecto, la función `mergeSort()` realiza la división recursiva del con
 
 Esta implementación se encuentra en el archivo `ListaJugadores.h`.
 
-También se utilizan las siguientes funciones para aplicar el ordenamiento dependiendo de la estadistica seleccionada:
+El programa utiliza una sola función `ordenar(int criterio)` para aplicar Merge Sort con diferentes criterios de comparación:
 
-- `ordenarPorNombre()`
-- `ordenarPorPuntos()`
-- `ordenarPorAsistencias()`
-- `ordenarPorRebotes()`
-
-Todas estas funciones utilizan Merge Sort, por lo que conservan una complejidad temporal de `O(n log n)`.
+- `1` para ordenar por nombre.
+- `2` para ordenar por puntos.
+- `3` para ordenar por asistencias.
+- `4` para ordenar por rebotes.
 
 ### SICT0302: Toma decisiones
 
@@ -110,7 +108,7 @@ Para BasketStats se seleccionó Merge Sort como algoritmo de ordenamiento porque
 
 Merge Sort tiene una complejidad de `O(n log n)` en el mejor, promedio y peor caso. Esto permite que el algoritmo mantenga un comportamiento constante aunque aumente la cantidad de jugadores.
 
-Para determinar el criterio de ordenamiento se utiliza la función `vaAntes()`, que compara dos jugadores dependiendo de la estadistica seleccionada.
+Para determinar el criterio de ordenamiento se utiliza la función `comparar()`,que compara dos jugadores dependiendo de la estadistica seleccionada.
 
 La implementación de Merge Sort y los diferentes metodos de ordenamiento se encuentran en el archivo `ListaJugadores.h`.
 
