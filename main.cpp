@@ -5,11 +5,11 @@ using namespace std;
 
 int main() {
     ListaJugadores lista;
-    int opcion;
+    int opcion = -1;
 
     lista.cargarArchivo("jugadores.txt");
 
-    do {
+    while (opcion != 0) {
         cout << "\n BASKETSTATS " << endl;
         cout << "1. Mostrar jugadores" << endl;
         cout << "2. Ordenar por nombre" << endl;
@@ -42,8 +42,7 @@ int main() {
         else if (opcion != 0) {
             cout << "Opcion no valida." << endl;
         }
-
-    } while (opcion != 0);
+    }
 
     cout << "Programa terminado." << endl;
 
