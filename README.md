@@ -99,6 +99,14 @@ Como en cada nivel se recorren en total los `n` elementos para volverlos a junta
 
 `O(n log n)`
 
+Esto se mantiene en los tres casos:
+
+- Mejor caso: `O(n log n)`
+- Caso promedio: `O(n log n)`
+- Peor caso: `O(n log n)`
+
+Aunque los jugadores ya estuvieran ordenados, Merge Sort sigue haciendo las divisiones y después vuelve a unir los elementos, por eso el mejor caso también sigue siendo `O(n log n)`.
+
 En BasketStats esta lógica se encuentra principalmente en las funciones `merge()`, `mergeSort()`, `comparar()` y `ordenar()` del archivo `ListaJugadores.h`.
 
 ### SICT0302: Toma decisiones
