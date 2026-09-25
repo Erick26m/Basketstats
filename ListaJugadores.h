@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "Jugador.h"
+
 using namespace std;
 
 class ListaJugadores {
@@ -13,60 +14,72 @@ private:
     vector<Jugador> jugadores;
     int cantidad;
 
-    bool vaAntes(const Jugador& a, const Jugador& b, int criterio) {
+    bool comparar(const Jugador& a, const Jugador& b, int criterio) {
         if (criterio == 1) {
             return a.getNombre() < b.getNombre();
         }
+
         if (criterio == 2) {
             return a.getPuntos() > b.getPuntos();
         }
+
         if (criterio == 3) {
             return a.getAsistencias() > b.getAsistencias();
         }
+
         return a.getRebotes() > b.getRebotes();
     }
 
     void merge(int inicio, int mitad, int fin, int criterio) {
         vector<Jugador> aux(100);
 
-        int i = inicio;
-        int j = mitad + 1;
-        int k = inicio;
+        int izquierda = inicio;
+        int derecha = mitad + 1;
+        int posicion = inicio;
 
-        while (i <= mitad && j <= fin) {
-            if (vaAntes(jugadores[i], jugadores[j], criterio)) {
-                aux[k] = jugadores[i];
-                i++;
-            } else {
-                aux[k] = jugadores[j];
-                j++;
+        while (izquierda <= mitad && derecha <= fin) {
+
+            if (comparar(jugadores[izquierda],
+                         jugadores[derecha],
+                         criterio)) {
+
+                aux[posicion] = jugadores[izquierda];
+                izquierda++;
             }
-            k++;
+            else {
+                aux[posicion] = jugadores[derecha];
+                derecha++;
+            }
+
+            posicion++;
         }
 
-        while (i <= mitad) {
-            aux[k] = jugadores[i];
-            i++;
-            k++;
+        while (izquierda <= mitad) {
+            aux[posicion] = jugadores[izquierda];
+            izquierda++;
+            posicion++;
         }
 
-        while (j <= fin) {
-            aux[k] = jugadores[j];
-            j++;
-            k++;
+        while (derecha <= fin) {
+            aux[posicion] = jugadores[derecha];
+            derecha++;
+            posicion++;
         }
 
-        for (int x = inicio; x <= fin; x++) {
-            jugadores[x] = aux[x];
+        for (int i = inicio; i <= fin; i++) {
+            jugadores[i] = aux[i];
         }
     }
 
     void mergeSort(int inicio, int fin, int criterio) {
         if (inicio < fin) {
+
             int mitad = (inicio + fin) / 2;
 
             mergeSort(inicio, mitad, criterio);
+
             mergeSort(mitad + 1, fin, criterio);
+
             merge(inicio, mitad, fin, criterio);
         }
     }
@@ -84,16 +97,25 @@ public:
             return;
         }
 
-        string nombre, equipo, posicion;
+        string nombre;
+        string equipo;
+        string posicion;
+
         int edad;
-        double puntos, asistencias, rebotes;
+
+        double puntos;
+        double asistencias;
+        double rebotes;
 
         while (archivo >> nombre >> equipo >> posicion
                        >> edad >> puntos >> asistencias >> rebotes) {
 
             if (cantidad < 100) {
-                jugadores[cantidad] = Jugador(nombre, equipo, posicion, edad,
-                                              puntos, asistencias, rebotes);
+
+                jugadores[cantidad] =
+                    Jugador(nombre, equipo, posicion, edad,
+                            puntos, asistencias, rebotes);
+
                 cantidad++;
             }
         }
