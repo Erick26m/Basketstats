@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ListaJugadores.h"
+
 using namespace std;
 
 int main() {
@@ -23,27 +24,28 @@ int main() {
             lista.mostrarJugadores();
         }
         else if (opcion == 2) {
-            lista.ordenarPorNombre();
+            lista.ordenar(1);
             lista.mostrarJugadores();
         }
         else if (opcion == 3) {
-            lista.ordenarPorPuntos();
+            lista.ordenar(2);
             lista.mostrarJugadores();
         }
         else if (opcion == 4) {
-            lista.ordenarPorAsistencias();
+            lista.ordenar(3);
             lista.mostrarJugadores();
         }
         else if (opcion == 5) {
-            lista.ordenarPorRebotes();
+            lista.ordenar(4);
             lista.mostrarJugadores();
         }
         else if (opcion != 0) {
-            cout << "Opcion invalida." << endl;
+            cout << "Opcion no valida." << endl;
         }
 
     } while (opcion != 0);
 
     cout << "Programa terminado." << endl;
+
     return 0;
 }
