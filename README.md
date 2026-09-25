@@ -6,7 +6,7 @@ El objetivo del proyecto es facilitar la organización de una colección de juga
 
 ## Descripción del avance 1
 
-En este primer avance se implementa la estructura inicial de BasketStats para organizar información de jugadores de básquetbol.
+En este primer avance implemente la estructura inicial de BasketStats para organizar información de jugadores de básquetbol.
 
 Se implementa lo siguiente:
 
@@ -38,8 +38,6 @@ Ejecuta el siguiente comando en la terminal:
 
 El programa utiliza un archivo de texto llamado `jugadores.txt` para cargar la información de los jugadores de básquetbol.
 
-Cada línea contiene los datos de un jugador separados por espacios.
-
 El formato utilizado es:
 
 `nombre equipo posicion edad puntos asistencias rebotes`
@@ -49,20 +47,7 @@ Ejemplo:
 ```text
 Stephen_Curry Warriors Base 38 26.4 5.1 4.5
 Luka_Doncic Lakers Base 27 28.3 8.2 8.1
-Nikola_Jokic Nuggets Centro 31 27.1 9.0 12.4
-Jayson_Tatum Celtics Alero 28 26.8 4.9 8.3
-Giannis_Antetokounmpo Bucks Ala-Pivot 31 30.2 6.3 11.5
 ```
-
-Los campos representan:
-
-- `nombre`: nombre del jugador.
-- `equipo`: equipo al que pertenece.
-- `posicion`: posición en la que juega.
-- `edad`: edad del jugador.
-- `puntos`: promedio de puntos por partido.
-- `asistencias`: promedio de asistencias por partido.
-- `rebotes`: promedio de rebotes por partido.
 
 Los nombres que contienen espacios se escriben utilizando guion bajo, por ejemplo:
 
@@ -77,7 +62,7 @@ El programa muestra un menú desde el cual el usuario puede consultar y ordenar 
 El menú principal es:
 
 ```text
-===== BASKETSTATS =====
+BASKETSTATS
 1. Mostrar jugadores
 2. Ordenar por nombre
 3. Ordenar por puntos
@@ -103,16 +88,6 @@ Las principales salidas del programa son:
 #### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
 
 En BasketStats se utiliza el algoritmo Merge Sort para ordenar la información de los jugadores utilizando diferentes atributos como nombre, puntos, asistencias y rebotes.
-
-Merge Sort funciona dividiendo la colección de jugadores en partes cada vez más pequeñas hasta llegar a elementos individuales. Después, las partes se vuelven a combinar mientras se comparan los elementos de acuerdo con el criterio seleccionado.
-
-La complejidad temporal de Merge Sort es:
-
-- Mejor caso: `O(n log n)`
-- Caso promedio: `O(n log n)`
-- Peor caso: `O(n log n)`
-
-Esto ocurre porque el algoritmo divide los datos aproximadamente `log n` veces y en cada nivel procesa los `n` elementos.
 
 En el proyecto, la función `mergeSort()` realiza la división recursiva del conjunto de jugadores, mientras que la función `merge()` se encarga de combinar nuevamente los elementos en el orden correspondiente.
 
@@ -141,4 +116,3 @@ Para determinar el criterio de ordenamiento se utiliza la función `vaAntes()`, 
 
 La implementación de Merge Sort y los diferentes criterios de ordenamiento se encuentran en el archivo `ListaJugadores.h`.
 
-Por estas razones, Merge Sort es un algoritmo adecuado para organizar la información almacenada en BasketStats.
