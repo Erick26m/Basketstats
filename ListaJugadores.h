@@ -15,17 +15,14 @@ private:
     int cantidad;
 
     bool comparar(const Jugador& a, const Jugador& b, int criterio) {
-        if (criterio == 1) {
+        if (criterio == 1)
             return a.getNombre() < b.getNombre();
-        }
 
-        if (criterio == 2) {
+        if (criterio == 2)
             return a.getPuntos() > b.getPuntos();
-        }
 
-        if (criterio == 3) {
+        if (criterio == 3)
             return a.getAsistencias() > b.getAsistencias();
-        }
 
         return a.getRebotes() > b.getRebotes();
     }
@@ -38,15 +35,10 @@ private:
         int posicion = inicio;
 
         while (izquierda <= mitad && derecha <= fin) {
-
-            if (comparar(jugadores[izquierda],
-                         jugadores[derecha],
-                         criterio)) {
-
+            if (comparar(jugadores[izquierda], jugadores[derecha], criterio)) {
                 aux[posicion] = jugadores[izquierda];
                 izquierda++;
-            }
-            else {
+            } else {
                 aux[posicion] = jugadores[derecha];
                 derecha++;
             }
@@ -73,11 +65,9 @@ private:
 
     void mergeSort(int inicio, int fin, int criterio) {
         if (inicio < fin) {
-
             int mitad = (inicio + fin) / 2;
 
             mergeSort(inicio, mitad, criterio);
-
             mergeSort(mitad + 1, fin, criterio);
 
             merge(inicio, mitad, fin, criterio);
@@ -97,21 +87,14 @@ public:
             return;
         }
 
-        string nombre;
-        string equipo;
-        string posicion;
-
+        string nombre, equipo, posicion;
         int edad;
-
-        double puntos;
-        double asistencias;
-        double rebotes;
+        double puntos, asistencias, rebotes;
 
         while (archivo >> nombre >> equipo >> posicion
                        >> edad >> puntos >> asistencias >> rebotes) {
 
             if (cantidad < 100) {
-
                 jugadores[cantidad] =
                     Jugador(nombre, equipo, posicion, edad,
                             puntos, asistencias, rebotes);
@@ -124,37 +107,14 @@ public:
     }
 
     void mostrarJugadores() const {
-        if (cantidad == 0) {
-            cout << "No hay jugadores registrados." << endl;
-            return;
-        }
-
         for (int i = 0; i < cantidad; i++) {
             jugadores[i].mostrar();
         }
     }
 
-    void ordenarPorNombre() {
+    void ordenar(int criterio) {
         if (cantidad > 1) {
-            mergeSort(0, cantidad - 1, 1);
-        }
-    }
-
-    void ordenarPorPuntos() {
-        if (cantidad > 1) {
-            mergeSort(0, cantidad - 1, 2);
-        }
-    }
-
-    void ordenarPorAsistencias() {
-        if (cantidad > 1) {
-            mergeSort(0, cantidad - 1, 3);
-        }
-    }
-
-    void ordenarPorRebotes() {
-        if (cantidad > 1) {
-            mergeSort(0, cantidad - 1, 4);
+            mergeSort(0, cantidad - 1, criterio);
         }
     }
 };
