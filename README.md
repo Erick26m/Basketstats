@@ -87,28 +87,34 @@ Las principales salidas del programa son:
 
 #### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
 
-En BasketStats se utiliza el algoritmo Merge Sort para ordenar la información de los jugadores utilizando diferentes atributos como nombre, puntos, asistencias y rebotes.
+En mi proyecto utilizo Merge Sort para ordenar a los jugadores por nombre, puntos, asistencias o rebotes.
 
-En el proyecto, la función `mergeSort()` realiza la división recursiva del conjunto de jugadores, mientras que la función `merge()` se encarga de combinar nuevamente los elementos en el orden correspondiente.
+La función `comparar()` solamente compara dos jugadores dependiendo del criterio que se esté usando.
 
-Esta implementación se encuentra en el archivo `ListaJugadores.h`.
+Después está la función `merge()`, que se encarga de unir dos partes que ya están ordenadas. Para hacerlo tiene que recorrer los elementos de esas dos partes y acomodarlos en el vector auxiliar. Por eso su complejidad es `O(n)`.
 
-El programa utiliza una sola función `ordenar(int criterio)` para aplicar Merge Sort con diferentes criterios de comparación:
+La función `mergeSort()` divide la lista de jugadores en dos mitades de manera recursiva hasta llegar a grupos de un solo elemento. Esta división genera aproximadamente `log n` niveles.
 
-- `1` para ordenar por nombre.
-- `2` para ordenar por puntos.
-- `3` para ordenar por asistencias.
-- `4` para ordenar por rebotes.
+Como en cada nivel se recorren en total los `n` elementos para volverlos a juntar, la complejidad final del algoritmo es:
+
+`O(n log n)`
+
+En BasketStats esta lógica se encuentra principalmente en las funciones `merge()`, `mergeSort()`, `comparar()` y `ordenar()` del archivo `ListaJugadores.h`.
 
 ### SICT0302: Toma decisiones
 
 #### Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
 
-Para BasketStats se seleccionó Merge Sort como algoritmo de ordenamiento porque el programa trabaja con una lista de jugadores que puede organizarse utilizando diferentes estadísticas.
+Para elegir el algoritmo de ordenamiento consideré los algoritmos que vimos en clase: Bubble Sort, Selection Sort, Insertion Sort, Merge Sort y Quick Sort.
 
-Merge Sort tiene una complejidad de `O(n log n)` en el mejor, promedio y peor caso. Esto permite que el algoritmo mantenga un comportamiento constante aunque aumente la cantidad de jugadores.
+Bubble Sort y Selection Sort son fáciles de entender, pero cuando aumenta la cantidad de datos pueden llegar a realizar muchas comparaciones porque su complejidad es `O(n²)`.
 
-Para determinar el criterio de ordenamiento se utiliza la función `comparar()`,que compara dos jugadores dependiendo de la estadistica seleccionada.
+Insertion Sort puede funcionar bien cuando los datos ya están casi ordenados, pero en el caso promedio y en el peor caso también puede llegar a `O(n²)`.
 
-La implementación de Merge Sort y los diferentes metodos de ordenamiento se encuentran en el archivo `ListaJugadores.h`.
+También consideré Quick Sort porque normalmente tiene una complejidad de `O(n log n)`, pero en su peor caso puede llegar a `O(n²)` dependiendo de cómo se seleccione el pivote y de cómo estén acomodados los datos.
 
+Al final elegí Merge Sort porque mantiene una complejidad de `O(n log n)` en el mejor, promedio y peor caso. Esto me pareció conveniente para BasketStats porque la cantidad de jugadores puede aumentar y los datos no necesariamente van a estar ordenados desde el inicio.
+
+Además, puedo utilizar el mismo Merge Sort para ordenar por diferentes datos del jugador. La función `comparar()` cambia la comparación dependiendo de si quiero ordenar por nombre, puntos, asistencias o rebotes.
+
+Por estas razones decidí utilizar Merge Sort para el proyecto.
