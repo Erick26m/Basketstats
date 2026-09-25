@@ -93,7 +93,7 @@ En el proyecto, la función `mergeSort()` realiza la división recursiva del con
 
 Esta implementación se encuentra en el archivo `ListaJugadores.h`.
 
-También se utilizan las siguientes funciones para aplicar el ordenamiento dependiendo del atributo seleccionado:
+También se utilizan las siguientes funciones para aplicar el ordenamiento dependiendo de la estadistica seleccionada:
 
 - `ordenarPorNombre()`
 - `ordenarPorPuntos()`
