@@ -89,25 +89,31 @@ Las principales salidas del programa son:
 
 En mi proyecto utilizo Merge Sort para ordenar a los jugadores por nombre, puntos, asistencias o rebotes.
 
-La función `comparar()` solamente compara dos jugadores dependiendo del criterio que se esté usando.
+La función `comparar()` se encarga de comparar dos jugadores dependiendo del criterio que se esté usando. Como solamente compara un atributo entre dos jugadores, esta operación se considera de complejidad `O(1)`.
 
-Después está la función `merge()`, que se encarga de unir dos partes que ya están ordenadas. Para hacerlo tiene que recorrer los elementos de esas dos partes y acomodarlos en el vector auxiliar. Por eso su complejidad es `O(n)`.
+La función `merge()` une dos partes que ya se encuentran ordenadas. Para hacerlo recorre los elementos de ambas partes, los acomoda en un vector auxiliar y después los copia nuevamente al vector de jugadores.
 
-La función `mergeSort()` divide la lista de jugadores en dos mitades de manera recursiva hasta llegar a grupos de un solo elemento. Esta división genera aproximadamente `log n` niveles.
+Por esta razón, la complejidad de `merge()` es `O(n)`, ya que la cantidad de operaciones aumenta de acuerdo con la cantidad de jugadores que se están mezclando.
 
-Como en cada nivel se recorren en total los `n` elementos para volverlos a juntar, la complejidad final del algoritmo es:
+La función `mergeSort()` divide la lista de jugadores en dos mitades de manera recursiva hasta llegar a grupos de un solo elemento.
 
-`O(n log n)`
+En cada división el tamaño del problema se reduce a la mitad, por lo que se generan aproximadamente `log n` niveles. En cada nivel, la función `merge()` termina recorriendo en total los `n` elementos.
 
-Esto se mantiene en los tres casos:
+Por eso la complejidad de Merge Sort se puede representar como:
+
+`O(n) * O(log n) = O(n log n)`
+
+La complejidad en los diferentes casos es:
 
 - Mejor caso: `O(n log n)`
 - Caso promedio: `O(n log n)`
 - Peor caso: `O(n log n)`
 
-Aunque los jugadores ya estuvieran ordenados, Merge Sort sigue haciendo las divisiones y después vuelve a unir los elementos, por eso el mejor caso también sigue siendo `O(n log n)`.
+El mejor caso también es `O(n log n)` porque aunque los jugadores ya estén ordenados, Merge Sort sigue dividiendo la lista y después vuelve a combinar sus elementos.
 
-En BasketStats esta lógica se encuentra principalmente en las funciones `merge()`, `mergeSort()`, `comparar()` y `ordenar()` del archivo `ListaJugadores.h`.
+Finalmente, la función `ordenar()` llama a `mergeSort()` utilizando el criterio seleccionado, por lo que también tiene una complejidad de `O(n log n)`.
+
+En BasketStats este análisis se puede observar en las funciones `comparar()`, `merge()`, `mergeSort()` y `ordenar()` del archivo `ListaJugadores.h`.
 
 ### SICT0302: Toma decisiones
 
