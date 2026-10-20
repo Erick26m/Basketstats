@@ -61,9 +61,6 @@ En Windows:
 
 `segundo_avance.exe`
 
-En Linux o macOS:
-
-`./segundo_avance`
 
 ## Descripción de las entradas del avance de proyecto
 
