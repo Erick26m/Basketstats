@@ -101,7 +101,7 @@ En cada división el tamaño del problema se reduce a la mitad, por lo que se ge
 
 Por eso la complejidad de Merge Sort se puede representar como:
 
-`O(n) * O(log n) = O(n log n)`
+`O(n log n)`
 
 La complejidad en los diferentes casos es:
 
@@ -115,28 +115,23 @@ Finalmente, la función `ordenar()` llama a `mergeSort()` utilizando el criterio
 
 En BasketStats este análisis se puede observar en las funciones `comparar()`, `merge()`, `mergeSort()` y `ordenar()` del archivo `ListaJugadores.h`.
 
+
 ### SICT0302: Toma decisiones
 
 #### Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
 
-Para elegir el algoritmo de ordenamiento no solamente consideré Merge Sort. También comparé los algoritmos que vimos en clase para decidir cuál era más conveniente para BasketStats.
+Para elegir el algoritmo de ordenamiento consideré varios de los algoritmos que vimos en clase.
 
-| Algoritmo | Mejor caso | Caso promedio | Peor caso |
-|------------|-------------|---------------|------------|
-| Bubble Sort | O(n²) | O(n²) | O(n²) |
-| Selection Sort | O(n²) | O(n²) | O(n²) |
-| Insertion Sort | O(n) | O(n²) | O(n²) |
-| Merge Sort | O(n log n) | O(n log n) | O(n log n) |
-| Quick Sort | O(n log n) | O(n log n) | O(n²) |
+Bubble Sort y Selection Sort tienen una complejidad de `O(n²)` en la mayoría de los casos, por lo que al aumentar la cantidad de jugadores también aumenta bastante la cantidad de comparaciones que se necesitan.
 
-Bubble Sort y Selection Sort son algoritmos sencillos, pero conforme aumenta la cantidad de jugadores pueden llegar a necesitar muchas más comparaciones porque su complejidad es `O(n²)`.
+Insertion Sort puede llegar a tener una complejidad de `O(n)` cuando los datos ya están ordenados o casi ordenados, pero en el caso promedio y en el peor caso puede llegar a `O(n²)`.
 
-Insertion Sort tiene la ventaja de que puede llegar a `O(n)` si los datos ya están ordenados o casi ordenados, pero en el caso promedio y en el peor caso sigue teniendo una complejidad de `O(n²)`.
+También consideré Quick Sort, ya que en el mejor caso y en el caso promedio tiene una complejidad de `O(n log n)`. Sin embargo, en el peor caso puede llegar a `O(n²)` dependiendo de cómo se dividan los datos.
 
-También consideré Quick Sort porque en el mejor caso y en el caso promedio puede tener una complejidad de `O(n log n)`. Sin embargo, en su peor caso puede llegar a `O(n²)` dependiendo de cómo se dividan los datos.
+Merge Sort, en cambio, mantiene una complejidad de `O(n log n)` en el mejor caso, en el caso promedio y en el peor caso.
 
-Al final decidí utilizar Merge Sort porque mantiene una complejidad de `O(n log n)` en el mejor, promedio y peor caso. Esto me conviene para BasketStats porque los jugadores pueden venir en cualquier orden dentro del archivo y la cantidad de datos puede aumentar.
+Por esta razón decidí utilizar Merge Sort en BasketStats, ya que los jugadores pueden venir en cualquier orden dentro del archivo y la cantidad de datos puede aumentar.
 
-Además, puedo utilizar el mismo algoritmo para ordenar por diferentes atributos. La función `comparar()` cambia la comparación dependiendo de si se quiere ordenar por nombre, puntos, asistencias o rebotes.
+Además, el mismo algoritmo me permite ordenar a los jugadores por diferentes atributos como nombre, puntos, asistencias o rebotes utilizando la función `comparar()`.
 
 Por estas razones consideré que Merge Sort era la opción más adecuada para mi proyecto.
