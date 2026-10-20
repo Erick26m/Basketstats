@@ -113,7 +113,6 @@ Las principales salidas del programa son:
 - Lista de jugadores ordenada de mayor a menor por rebotes.
 - Información de un jugador encontrado mediante el Árbol Binario de Búsqueda.
 - Mensaje indicando cuando un jugador no se encuentra.
-- Mensaje de error en caso de que no se pueda abrir el archivo de entrada.
 - Mensaje de error si el usuario selecciona una opción no válida.
 
 ## Desarrollo de competencias
