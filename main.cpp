@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "ListaJugadores.h"
 
 using namespace std;
@@ -16,6 +17,7 @@ int main() {
         cout << "3. Ordenar por puntos" << endl;
         cout << "4. Ordenar por asistencias" << endl;
         cout << "5. Ordenar por rebotes" << endl;
+        cout << "6. Buscar jugador por nombre" << endl;
         cout << "0. Salir" << endl;
         cout << "Opcion: ";
         cin >> opcion;
@@ -39,12 +41,20 @@ int main() {
             lista.ordenar(4);
             lista.mostrarJugadores();
         }
+        else if (opcion == 6) {
+            string nombreBuscado;
+
+            cout << "Nombre del jugador: ";
+            cin >> nombreBuscado;
+
+            lista.buscarJugador(nombreBuscado);
+        }
         else if (opcion != 0) {
-            cout << "Opcion no valida." << endl;
+            cout << "Opcion no valida" << endl;
         }
     }
 
-    cout << "Programa terminado." << endl;
+    cout << "Programa terminado" << endl;
 
     return 0;
 }
