@@ -41,18 +41,6 @@ public:
     return nombre;
 }
 
-string getEquipo() const {
-    return equipo;
-}
-
-string getPosicion() const {
-    return posicion;
-}
-
-int getEdad() const {
-    return edad;
-}
-
 double getPuntos() const {
     return puntos;
 }
