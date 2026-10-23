@@ -101,6 +101,7 @@ BASKETSTATS
 4. Ordenar por asistencias
 5. Ordenar por rebotes
 6. Buscar jugador por nombre
+7.Guardar jugadores en archivo
 0. Salir
 ```
 
@@ -113,6 +114,7 @@ Las principales salidas del programa son:
 - Lista de jugadores ordenada de mayor a menor por rebotes.
 - Información de un jugador encontrado mediante el Árbol Binario de Búsqueda.
 - Mensaje indicando cuando un jugador no se encuentra.
+- Creación del archivo `jugadores_guardados.txt` con la información de los jugadores.
 - Mensaje de error si el usuario selecciona una opción no válida.
 
 ## Desarrollo de competencias
