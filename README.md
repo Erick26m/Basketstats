@@ -135,12 +135,27 @@ Considero que ahora sí desarrollé este criterio porque puedo explicar de dónd
 
 En BasketStats utilizo un `vector` y un Árbol Binario de Búsqueda.
 
-El `vector` se utiliza para almacenar, mostrar y ordenar jugadores. Acceder a una posición mediante su índice es `O(1)`, recorrer todos sus elementos es `O(n)` y ordenarlos con Merge Sort es `O(n log n)`.
+El `vector` se utiliza para almacenar, mostrar, ordenar y guardar jugadores. Acceder a una posición mediante su índice es `O(1)`, mientras que recorrer todos sus elementos es `O(n)`. Al ordenar el vector con Merge Sort la complejidad es `O(n log n)`.
 
-El ABB se utiliza para insertar y buscar jugadores por nombre. En un árbol razonablemente balanceado, la inserción y búsqueda tienen una complejidad promedio de `O(log n)`. En el peor caso, si el árbol queda desbalanceado, pueden llegar a `O(n)`.
+El ABB se utiliza para insertar y buscar jugadores por nombre. En un árbol razonablemente balanceado, una inserción o búsqueda tiene una complejidad promedio de `O(log n)`. En el peor caso, si el árbol queda desbalanceado, estas operaciones pueden llegar a `O(n)`.
 
-Considero que desarrollé este criterio porque puedo identificar la complejidad de las operaciones que realizo con cada estructura y explicar para qué se utilizan dentro del programa.
+Al cargar todos los jugadores al árbol se realizan `n` inserciones, por lo que el proceso completo tiene una complejidad promedio de `O(n log n)` y puede llegar a `O(n²)` en el peor caso si el árbol queda completamente desbalanceado.
 
+Considero que desarrollé este criterio porque puedo identificar la complejidad de las operaciones realizadas con cada estructura y explicar para qué se utiliza cada una dentro del programa.
+
+#### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
+
+Además de las estructuras y el algoritmo de ordenamiento, también analicé las demás funciones principales de BasketStats.
+
+La función `mostrarJugadores()` recorre todos los jugadores almacenados, por lo que tiene una complejidad de `O(n)`. La función `guardarArchivo()` también recorre el vector completo para escribir cada jugador en el archivo, por lo que su complejidad es `O(n)`.
+
+La búsqueda de un jugador en el ABB tiene una complejidad promedio de `O(log n)` y puede llegar a `O(n)` en el peor caso.
+
+El ordenamiento mediante Merge Sort tiene una complejidad de `O(n log n)`. La carga inicial de los jugadores, considerando también su inserción en el ABB, tiene una complejidad promedio de `O(n log n)` y un peor caso de `O(n²)`.
+
+Por lo tanto, las operaciones principales del programa normalmente se mantienen en `O(n log n)`, aunque en el peor caso la construcción del ABB puede llegar a `O(n²)`.
+
+Considero que desarrollé este criterio porque puedo analizar las funciones principales del programa y determinar cómo afectan a su complejidad general.
 
 ### SICT0302: Toma decisiones
 
@@ -160,8 +175,7 @@ Para buscar jugadores consideré utilizar solamente el `vector`, pero una búsqu
 
 Decidí utilizar un Árbol Binario de Búsqueda porque permite organizar los jugadores por nombre y realizar búsquedas con una complejidad promedio de `O(log n)`, aunque puede llegar a `O(n)` si el árbol queda desbalanceado.
 
-También mantuve el `vector` porque sigue siendo útil para mostrar y ordenar jugadores. Considero que desarrollé este criterio porque seleccioné cada estructura dependiendo de lo que necesito realizar: el vector para recorridos y ordenamientos, y el ABB para búsquedas.
-
+También mantuve el `vector` porque sigue siendo útil para mostrar, ordenar y guardar jugadores. Considero que desarrollé este criterio porque seleccioné cada estructura dependiendo de lo que necesito realizar: el vector para recorridos, ordenamientos y escritura de archivos, y el ABB para búsquedas.
 
 ### SICT0303: Implementa acciones científicas
 
@@ -184,3 +198,13 @@ Cada jugador se lee utilizando el formato:
 Con esos datos se crea un objeto `Jugador`, que se almacena en el `vector` y se inserta en el Árbol Binario de Búsqueda.
 
 Considero que desarrollé este criterio porque el programa puede leer los datos desde un archivo externo y cargarlos correctamente en las estructuras utilizadas por BasketStats.
+
+#### Implementa mecanismos de escritura de archivos para guardar los datos de las estructuras de manera correcta.
+
+BasketStats implementa la función `guardarArchivo()`, que utiliza `ofstream` para guardar la información de los jugadores en el archivo `jugadores_guardados.txt`.
+
+La función recorre los jugadores almacenados en el `vector` y escribe el nombre, equipo, posición, edad, puntos, asistencias y rebotes de cada jugador.
+
+Antes de escribir se verifica que el archivo se haya abierto correctamente y al terminar se cierra utilizando `close()`.
+
+Considero que desarrollé este criterio porque el programa no solamente puede cargar información desde un archivo, sino que también puede guardar nuevamente los datos almacenados durante la ejecución.
