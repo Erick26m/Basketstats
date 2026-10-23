@@ -37,21 +37,33 @@ public:
         rebotes = reb;
     }
 
-    string getNombre() const {
-        return nombre;
-    }
+   string getNombre() const {
+    return nombre;
+}
 
-    double getPuntos() const {
-        return puntos;
-    }
+string getEquipo() const {
+    return equipo;
+}
 
-    double getAsistencias() const {
-        return asistencias;
-    }
+string getPosicion() const {
+    return posicion;
+}
 
-    double getRebotes() const {
-        return rebotes;
-    }
+int getEdad() const {
+    return edad;
+}
+
+double getPuntos() const {
+    return puntos;
+}
+
+double getAsistencias() const {
+    return asistencias;
+}
+
+double getRebotes() const {
+    return rebotes;
+}
 
     void mostrar() const {
         cout << nombre << " | "
