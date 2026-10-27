@@ -134,6 +134,24 @@ public:
             cout << "Jugador no encontrado" << endl;
         }
     }
+    // Agrega un jugador al vector y al arbol
+    void agregarJugador(string nombre, string equipo, string posicion, int edad,
+                        double puntos, double asistencias, double rebotes) {
+
+        if (cantidad < 100) {
+            Jugador jugadorNuevo(nombre, equipo, posicion, edad,
+                                 puntos, asistencias, rebotes);
+
+            jugadores[cantidad] = jugadorNuevo;
+            arbolJugadores.insertar(jugadorNuevo);
+            cantidad++;
+
+            cout << "Jugador agregado" << endl;
+        }
+        else {
+            cout << "No hay espacio para mas jugadores" << endl;
+        }
+    }
 };
 
 #endif
