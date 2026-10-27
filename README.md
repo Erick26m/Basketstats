@@ -133,13 +133,37 @@ Considero que ahora sí desarrollé este criterio porque puedo explicar de dónd
 
 En BasketStats utilizo un `vector` y un Árbol Binario de Búsqueda.
 
-El `vector` se utiliza para almacenar, mostrar y ordenar jugadores. Acceder a una posición mediante su índice es `O(1)`, recorrer todos sus elementos es `O(n)` y ordenarlos con Merge Sort es `O(n log n)`.
+El `vector` se utiliza para almacenar, mostrar y ordenar jugadores. Cuando accedo a un jugador por medio de su posición, la complejidad es `O(1)` en el mejor, caso promedio y peor caso, ya que el acceso por índice es directo.
 
-El ABB se utiliza para insertar y buscar jugadores por nombre. En un árbol razonablemente balanceado, una inserción o búsqueda tiene una complejidad promedio de `O(log n)`. En el peor caso, si el árbol queda desbalanceado, estas operaciones pueden llegar a `O(n)`.
+Cuando guardo un jugador en el `vector` utilizando la posición `cantidad`, la operación también es `O(1)` en el mejor, caso promedio y peor caso, porque solamente se asigna un elemento en una posición ya conocida.
 
-Al cargar todos los jugadores en el árbol se realizan `n` inserciones, por lo que el proceso completo tiene una complejidad promedio de `O(n log n)` y puede llegar a `O(n²)` en el peor caso si el árbol queda completamente desbalanceado.
+Para mostrar todos los jugadores es necesario recorrer el `vector` completo. Por eso, en este uso la complejidad es `O(n)` en el mejor, caso promedio y peor caso, ya que siempre se recorren todos los elementos almacenados.
 
-Considero que desarrollé este criterio porque puedo identificar la complejidad de las operaciones realizadas con cada estructura y explicar para qué se utiliza cada una dentro del programa.
+El ABB se utiliza para insertar y buscar jugadores por nombre. En la operación `insertar()`, el mejor caso es `O(1)`, por ejemplo cuando el árbol está vacío o cuando el nuevo jugador se coloca inmediatamente como hijo de la raíz. El caso promedio es `O(log n)` cuando el árbol está razonablemente balanceado, y el peor caso es `O(n)` cuando el árbol queda desbalanceado.
+
+En la operación `buscar()`, el mejor caso es `O(1)` cuando el jugador que se busca se encuentra en la raíz. El caso promedio es `O(log n)` cuando el árbol está razonablemente balanceado, y el peor caso es `O(n)` cuando el árbol se comporta como una lista por estar desbalanceado.
+
+Además, el ordenamiento de los jugadores almacenados en el `vector` se realiza con Merge Sort, por lo que esa operación tiene una complejidad de `O(n log n)`.
+
+Considero que desarrollé este criterio porque ahora sí analizo cada estructura de datos de acuerdo con las operaciones que realmente utilizo en el programa, incluyendo mejor caso, caso promedio y peor caso.
+
+#### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
+
+Además de las estructuras de datos y del algoritmo de ordenamiento, también analicé las funciones principales del programa.
+
+La función `cargarArchivo()` lee todos los jugadores desde el archivo `jugadores.txt`. Leer las `n` líneas del archivo tiene una complejidad de `O(n)`. Sin embargo, dentro de esa misma función también se inserta cada jugador en el `vector` y en el ABB. La inserción en el `vector` es `O(1)` por jugador, mientras que la inserción en el ABB es `O(log n)` en promedio y `O(n)` en el peor caso. Por eso, la complejidad total de `cargarArchivo()` es `O(n log n)` en promedio y `O(n²)` en el peor caso.
+
+La función `mostrarJugadores()` recorre todos los jugadores almacenados en el `vector`, por lo que su complejidad es `O(n)`.
+
+La función `ordenar()` llama a `mergeSort()`, por lo que su complejidad es `O(n log n)`.
+
+La función `buscarJugador()` utiliza el ABB. Su mejor caso es `O(1)`, su caso promedio es `O(log n)` y su peor caso es `O(n)`.
+
+La lógica del menú solamente evalúa la opción elegida por el usuario y dirige la ejecución a la operación correspondiente, por lo que esa parte tiene complejidad `O(1)`.
+
+Tomando en cuenta las operaciones principales del programa, la complejidad más representativa de BasketStats es `O(n log n)` en condiciones normales, ya que tanto la carga del archivo como el ordenamiento trabajan en ese orden en promedio. Sin embargo, en el peor caso la carga inicial puede llegar a `O(n²)` si el ABB se desbalancea completamente.
+
+Considero que desarrollé este criterio porque ahora sí analizo las funciones principales del programa y puedo determinar la complejidad general de BasketStats.
 
 ### SICT0302: Toma decisiones
 
