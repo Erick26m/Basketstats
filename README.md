@@ -141,7 +141,7 @@ Para mostrar a todos los jugadores es necesario recorrer los elementos almacenad
 
 El Árbol Binario de Búsqueda se utiliza para insertar y buscar jugadores utilizando su nombre.
 
-Para la operación `insertar()`, el mejor caso es `O(1)` cuando el árbol está vacío o el nuevo jugador puede colocarse inmediatamente desde la raíz. El caso promedio es `O(log n)` cuando el árbol está razonablemente balanceado. El peor caso es `O(n)` cuando el árbol queda desbalanceado y es necesario recorrer varios nodos hasta encontrar dónde insertar al jugador.
+Para la operación `insertar()`, el mejor caso es `O(1)` cuando el árbol está vacío o cuando después de comparar con la raíz el jugador puede insertarse directamente como uno de sus hijos. El caso promedio es `O(log n)` cuando el árbol está razonablemente balanceado. El peor caso es `O(n)` cuando el árbol queda desbalanceado y es necesario recorrer varios nodos hasta encontrar dónde insertar al jugador.
 
 Para la operación `buscar()`, el mejor caso es `O(1)` cuando el jugador buscado se encuentra en la raíz. El caso promedio es `O(log n)` cuando el árbol está razonablemente balanceado y el peor caso es `O(n)` cuando el árbol se encuentra desbalanceado.
 
