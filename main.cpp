@@ -18,6 +18,7 @@ int main() {
         cout << "4. Ordenar por asistencias" << endl;
         cout << "5. Ordenar por rebotes" << endl;
         cout << "6. Buscar jugador por nombre" << endl;
+        cout << "7. Agregar jugador" << endl;
         cout << "0. Salir" << endl;
         cout << "Opcion: ";
         cin >> opcion;
@@ -48,6 +49,35 @@ int main() {
             cin >> nombreBuscado;
 
             lista.buscarJugador(nombreBuscado);
+        }
+        else if (opcion == 7) {
+            string nombre, equipo, posicion;
+            int edad;
+            double puntos, asistencias, rebotes;
+
+            cout << "Nombre: ";
+            cin >> nombre;
+
+            cout << "Equipo: ";
+            cin >> equipo;
+
+            cout << "Posicion: ";
+            cin >> posicion;
+
+            cout << "Edad: ";
+            cin >> edad;
+
+            cout << "Puntos por partido: ";
+            cin >> puntos;
+
+            cout << "Asistencias por partido: ";
+            cin >> asistencias;
+
+            cout << "Rebotes por partido: ";
+            cin >> rebotes;
+
+            lista.agregarJugador(nombre, equipo, posicion, edad,
+                                 puntos, asistencias, rebotes);
         }
         else if (opcion != 0) {
             cout << "Opcion no valida" << endl;
