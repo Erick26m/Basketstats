@@ -2,7 +2,7 @@
 
 BasketStats es un programa que permite organizar y consultar información de jugadores de básquetbol. El sistema maneja datos como nombre, equipo, posición, edad, puntos, asistencias y rebotes por partido.
 
-El objetivo del proyecto es facilitar la organización de una colección de jugadores, permitiendo visualizar su información, ordenarla utilizando diferentes estadísticas y consultar jugadores específicos.
+El objetivo del proyecto es facilitar la organización de una colección de jugadores, permitiendo visualizar su información, ordenarla utilizando diferentes estadísticas, consultar jugadores específicos, agregar nuevos jugadores y guardar los cambios realizados.
 
 ## Descripción del avance 1
 
@@ -49,18 +49,45 @@ En este avance se implementa:
 
 4. También se corrigió la documentación del primer avance tomando en cuenta la retroalimentación recibida, agregando un análisis de complejidad más completo y una comparación entre diferentes algoritmos antes de justificar la elección de Merge Sort.
 
+## Descripción del avance 3
+
+En este tercer avance se completa el funcionamiento principal de BasketStats agregando opciones para modificar y guardar la información de los jugadores.
+
+Se agregó la posibilidad de registrar nuevos jugadores durante la ejecución. Cada jugador nuevo se almacena tanto en el `vector` como en el Árbol Binario de Búsqueda, por lo que después puede mostrarse, ordenarse y buscarse.
+
+También se agregó un mecanismo para guardar los cambios realizados en `jugadores.txt`, permitiendo conservar los jugadores agregados después de cerrar el programa.
+
+Finalmente, se completa el análisis de complejidad de los demás componentes del programa para determinar el costo de sus principales operaciones.
+
+### Cambios sobre el segundo avance
+
+1. Se agregó la función `agregarJugador()` para registrar nuevos jugadores durante la ejecución. El jugador se almacena en el `vector` y también se inserta en el Árbol Binario de Búsqueda.
+
+2. Se agregó la opción `Agregar jugador` al menú principal para ingresar el nombre, equipo, posición, edad, puntos, asistencias y rebotes de un nuevo jugador.
+
+3. Se agregó la función `guardarArchivo()` para escribir en `jugadores.txt` los jugadores almacenados actualmente en el `vector`. Esto permite conservar los cambios realizados durante la ejecución.
+
+4. Se agregó la opción `Guardar cambios` al menú principal para que el usuario pueda guardar la información actualizada.
+
+5. Se agregaron los getters necesarios en la clase `Jugador` para obtener el equipo, posición y edad al momento de escribir nuevamente los datos en el archivo.
+
+6. Se completó el análisis de complejidad de los demás componentes del programa y se determinó la complejidad general considerando las operaciones utilizadas.
+
 ## Instrucciones para compilar el avance de proyecto
 
 Ejecuta el siguiente comando en la terminal:
 
-`g++ main.cpp -std=c++11 -o segundo_avance`
+`g++ main.cpp -std=c++11 -o tercer_avance`
 
 ## Instrucciones para ejecutar el avance de proyecto
 
 En Windows:
 
-`segundo_avance.exe`
+`tercer_avance.exe`
 
+En Linux o macOS:
+
+`./tercer_avance`
 
 ## Descripción de las entradas del avance de proyecto
 
@@ -86,9 +113,19 @@ Los nombres que contienen espacios se escriben utilizando guion bajo, por ejempl
 
 Al leer el archivo, la información de los jugadores se almacena en el `vector` y también se utiliza para construir el Árbol Binario de Búsqueda.
 
+El programa también recibe información desde el menú. Para agregar un jugador se solicita:
+
+- Nombre.
+- Equipo.
+- Posición.
+- Edad.
+- Puntos por partido.
+- Asistencias por partido.
+- Rebotes por partido.
+
 ## Descripción de las salidas del avance de proyecto
 
-El programa muestra un menú desde el cual el usuario puede consultar y ordenar la información de los jugadores.
+El programa muestra un menú desde el cual el usuario puede consultar, ordenar, agregar y guardar información de los jugadores.
 
 El menú principal es:
 
@@ -101,6 +138,8 @@ BASKETSTATS
 4. Ordenar por asistencias
 5. Ordenar por rebotes
 6. Buscar jugador por nombre
+7. Agregar jugador
+8. Guardar cambios
 0. Salir
 ```
 
@@ -113,6 +152,8 @@ Las principales salidas del programa son:
 - Lista de jugadores ordenada de mayor a menor por rebotes.
 - Información de un jugador encontrado mediante el Árbol Binario de Búsqueda.
 - Mensaje indicando cuando un jugador no se encuentra.
+- Mensaje indicando cuando un jugador fue agregado.
+- Mensaje indicando cuando los cambios fueron guardados correctamente.
 - Mensaje de error si el usuario selecciona una opción no válida.
 
 ## Desarrollo de competencias
@@ -127,7 +168,7 @@ La función `merge()` recorre los elementos de las dos partes que se están unie
 
 Merge Sort mantiene una complejidad de `O(n log n)` en el mejor, promedio y peor caso, ya que aunque los datos estén ordenados sigue realizando las divisiones y uniones.
 
-Considero que ahora sí desarrollé este criterio porque puedo explicar de dónde sale la complejidad del algoritmo y no solamente mencionar el resultado. Esto se puede observar en las funciones `merge()`, `mergeSort()` y `ordenar()` de `ListaJugadores`.
+Considero que desarrollé este criterio porque puedo explicar de dónde sale la complejidad del algoritmo y no solamente mencionar el resultado. Esto se puede observar en las funciones `merge()`, `mergeSort()` y `ordenar()` de `ListaJugadores`.
 
 #### Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
 
@@ -147,7 +188,31 @@ Para la operación `buscar()`, el mejor caso es `O(1)` cuando el jugador buscado
 
 Considero que desarrollé este criterio porque puedo analizar las operaciones que realmente utilizo de cada estructura de datos e identificar su mejor caso, caso promedio y peor caso dentro de BasketStats.
 
+#### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
 
+Además de las estructuras de datos y del algoritmo de ordenamiento, también analicé las demás funciones principales de BasketStats.
+
+La función `cargarArchivo()` lee los `n` jugadores almacenados en `jugadores.txt`. Cada jugador se guarda directamente en una posición del `vector`, lo cual tiene una complejidad de `O(1)`, y también se inserta en el ABB.
+
+La inserción de un jugador en el ABB tiene una complejidad promedio de `O(log n)` y un peor caso de `O(n)`. Como esta operación se realiza para los `n` jugadores del archivo, `cargarArchivo()` tiene una complejidad de `O(n log n)` cuando el árbol se mantiene razonablemente balanceado y puede llegar a `O(n²)` en el peor caso si queda completamente desbalanceado.
+
+La función `mostrarJugadores()` recorre todos los elementos almacenados en el vector, por lo que tiene una complejidad de `O(n)`.
+
+La función `ordenar()` utiliza Merge Sort, por lo que su complejidad es `O(n log n)`.
+
+La función `buscarJugador()` utiliza el ABB. Su mejor caso es `O(1)`, su caso promedio es `O(log n)` y su peor caso es `O(n)`.
+
+La función `agregarJugador()` almacena al nuevo jugador directamente en una posición del vector y también lo inserta en el ABB. Por esta razón, su mejor caso es `O(1)`, su caso promedio es `O(log n)` y su peor caso es `O(n)`.
+
+La función `guardarArchivo()` recorre todos los jugadores almacenados en el vector para escribirlos en `jugadores.txt`, por lo que tiene una complejidad de `O(n)`.
+
+Las comparaciones utilizadas por el menú para identificar la opción seleccionada son constantes, por lo que esta parte tiene una complejidad de `O(1)`. Después se ejecuta la función correspondiente a la opción seleccionada.
+
+La complejidad total de una sesión depende de las operaciones que realice el usuario, ya que el menú puede ejecutarse varias veces. La carga inicial normalmente tiene una complejidad de `O(n log n)`, mientras que en el peor caso puede llegar a `O(n²)` debido a las inserciones en un ABB completamente desbalanceado.
+
+Por lo tanto, considerando el peor caso de las operaciones principales utilizadas en BasketStats, la complejidad dominante puede llegar a ser `O(n²)`.
+
+Considero que desarrollé este criterio porque puedo analizar las diferentes funciones del programa y explicar cómo cada una influye en su complejidad general.
 
 ### SICT0302: Toma decisiones
 
@@ -159,7 +224,7 @@ Consideré Bubble Sort y Selection Sort, que pueden tener una complejidad de `O(
 
 Decidí utilizar Merge Sort porque mantiene `O(n log n)` en el mejor, promedio y peor caso. Además, puedo utilizar el mismo algoritmo para ordenar jugadores por nombre, puntos, asistencias o rebotes.
 
-Considero que ahora sí desarrollé este criterio porque comparé distintas alternativas antes de elegir el algoritmo que utilizo en BasketStats.
+Considero que desarrollé este criterio porque comparé distintas alternativas antes de elegir el algoritmo que utilizo en BasketStats.
 
 #### Selecciona una estructura de datos adecuada al problema y la usa correctamente.
 
@@ -194,3 +259,31 @@ Con estos datos se crea un objeto `Jugador`, que se almacena en el `vector` y ta
 Al terminar de leer la información, el archivo se cierra.
 
 Considero que desarrollé este criterio porque el programa puede leer correctamente la información desde un archivo externo y utilizar esos datos para llenar las estructuras que necesita BasketStats.
+
+#### Implementa mecanismos de escritura de archivos para guardar los datos de las estructuras de manera correcta.
+
+BasketStats utiliza la función `guardarArchivo()` para guardar los datos actuales de los jugadores en `jugadores.txt`.
+
+La función abre el archivo utilizando `ofstream` y verifica que se haya abierto correctamente. Después recorre los jugadores almacenados en el `vector` y escribe el nombre, equipo, posición, edad, puntos, asistencias y rebotes de cada uno.
+
+Al terminar de escribir todos los jugadores, el archivo se cierra utilizando `close()`.
+
+Esta función permite que los jugadores agregados durante la ejecución no se pierdan al cerrar el programa, ya que al seleccionar la opción `Guardar cambios` la información actual queda almacenada en `jugadores.txt`.
+
+Considero que desarrollé este criterio porque BasketStats puede cargar información desde un archivo y también guardar nuevamente los datos modificados durante la ejecución.
+
+### SEG0701: Cultura digital
+
+#### El producto entregado genera valor para un usuario final y se ejecuta sin errores.
+
+BasketStats permite organizar información de jugadores de básquetbol desde un solo programa. El usuario puede cargar jugadores desde un archivo, consultar su información, ordenar los datos por diferentes estadísticas, buscar jugadores por nombre, agregar jugadores nuevos y guardar los cambios realizados.
+
+Las opciones se presentan mediante un menú sencillo y cada una realiza una función específica dentro del programa.
+
+Considero que BasketStats genera valor para un usuario final porque permite organizar y consultar la información de los jugadores sin tener que modificar directamente el archivo de texto.
+
+#### Cumple con las pautas éticas institucionales y no utiliza IA para sustituir el proceso de aprendizaje.
+
+Durante el desarrollo del proyecto trabajé con los algoritmos y estructuras vistos durante el curso y fui revisando el funcionamiento de cada parte del programa.
+
+Las herramientas de apoyo utilizadas durante el desarrollo sirvieron para revisar, organizar y comprender mejor el proyecto, sin sustituir el aprendizaje de los temas trabajados durante el curso.
