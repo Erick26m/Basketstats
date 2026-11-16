@@ -19,6 +19,7 @@ int main() {
         cout << "5. Ordenar por rebotes" << endl;
         cout << "6. Buscar jugador por nombre" << endl;
         cout << "7. Agregar jugador" << endl;
+        cout<<  "8. Guardar cambios" <<endl;
         cout << "0. Salir" << endl;
         cout << "Opcion: ";
         cin >> opcion;
@@ -78,6 +79,9 @@ int main() {
 
             lista.agregarJugador(nombre, equipo, posicion, edad,
                                  puntos, asistencias, rebotes);
+        }
+        else if (opcion == 8) {
+            lista.guardarArchivo("jugadores.txt");
         }
         else if (opcion != 0) {
             cout << "Opcion no valida" << endl;
