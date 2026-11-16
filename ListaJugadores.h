@@ -152,6 +152,29 @@ public:
             cout << "No hay espacio para mas jugadores" << endl;
         }
     }
+    // Guarda los jugadores del vector en el archivo
+    void guardarArchivo(string nombreArchivo) const {
+        ofstream archivo(nombreArchivo);
+
+        if (!archivo.is_open()) {
+            cout << "No se pudo guardar el archivo" << endl;
+            return;
+        }
+
+        for (int i = 0; i < cantidad; i++) {
+            archivo << jugadores[i].getNombre() << " "
+                    << jugadores[i].getEquipo() << " "
+                    << jugadores[i].getPosicion() << " "
+                    << jugadores[i].getEdad() << " "
+                    << jugadores[i].getPuntos() << " "
+                    << jugadores[i].getAsistencias() << " "
+                    << jugadores[i].getRebotes() << endl;
+        }
+
+        archivo.close();
+
+        cout << "Cambios guardados" << endl;
+    }
 };
 
 #endif
