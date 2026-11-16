@@ -190,29 +190,25 @@ Considero que desarrollé este criterio porque puedo analizar las operaciones qu
 
 #### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
 
-Además de las estructuras de datos y del algoritmo de ordenamiento, también analicé las demás funciones principales de BasketStats.
+Después de analizar por separado Merge Sort, el `vector` y el Árbol Binario de Búsqueda, analicé cómo se combinan estas operaciones dentro de las funciones principales de BasketStats.
 
-La función `cargarArchivo()` lee los `n` jugadores almacenados en `jugadores.txt`. Cada jugador se guarda directamente en una posición del `vector`, lo cual tiene una complejidad de `O(1)`, y también se inserta en el ABB.
+La función `cargarArchivo()` lee los `n` jugadores de `jugadores.txt`. Cada jugador se guarda en una posición del `vector` y también se inserta en el ABB. Debido a las inserciones en el árbol, la carga completa tiene una complejidad de `O(n log n)` en el mejor caso y caso promedio cuando el árbol se mantiene balanceado. En el peor caso puede llegar a `O(n²)` si el árbol queda completamente desbalanceado.
 
-La inserción de un jugador en el ABB tiene una complejidad promedio de `O(log n)` y un peor caso de `O(n)`. Como esta operación se realiza para los `n` jugadores del archivo, `cargarArchivo()` tiene una complejidad de `O(n log n)` cuando el árbol se mantiene razonablemente balanceado y puede llegar a `O(n²)` en el peor caso si queda completamente desbalanceado.
+La función `mostrarJugadores()` recorre los jugadores almacenados, por lo que tiene una complejidad de `O(n)` en el mejor caso, caso promedio y peor caso.
 
-La función `mostrarJugadores()` recorre todos los elementos almacenados en el vector, por lo que tiene una complejidad de `O(n)`.
+La función `ordenar()` utiliza el algoritmo Merge Sort analizado anteriormente, por lo que tiene una complejidad de `O(n log n)`.
 
-La función `ordenar()` utiliza Merge Sort, por lo que su complejidad es `O(n log n)`.
+La función `buscarJugador()` utiliza la operación de búsqueda del ABB, por lo que su mejor caso es `O(1)`, su caso promedio es `O(log n)` y su peor caso es `O(n)`.
 
-La función `buscarJugador()` utiliza el ABB. Su mejor caso es `O(1)`, su caso promedio es `O(log n)` y su peor caso es `O(n)`.
+La función `agregarJugador()` almacena directamente el jugador en el `vector` y después utiliza la operación `insertar()` del ABB. Por esta razón, su mejor caso es `O(1)`, su caso promedio es `O(log n)` y su peor caso es `O(n)`.
 
-La función `agregarJugador()` almacena al nuevo jugador directamente en una posición del vector y también lo inserta en el ABB. Por esta razón, su mejor caso es `O(1)`, su caso promedio es `O(log n)` y su peor caso es `O(n)`.
+La función `guardarArchivo()` recorre todos los jugadores para escribirlos en `jugadores.txt`, por lo que tiene una complejidad de `O(n)` en el mejor caso, caso promedio y peor caso.
 
-La función `guardarArchivo()` recorre todos los jugadores almacenados en el vector para escribirlos en `jugadores.txt`, por lo que tiene una complejidad de `O(n)`.
+La complejidad total de una sesión depende de cuántas veces el usuario utilice cada opción. Sin embargo, considerando las operaciones principales del programa, la carga inicial normalmente trabaja en `O(n log n)` y puede llegar a `O(n²)` en el peor caso debido a la construcción de un ABB completamente desbalanceado.
 
-Las comparaciones utilizadas por el menú para identificar la opción seleccionada son constantes, por lo que esta parte tiene una complejidad de `O(1)`. Después se ejecuta la función correspondiente a la opción seleccionada.
+Por esta razón, el peor caso dominante de BasketStats puede llegar a ser `O(n²)`.
 
-La complejidad total de una sesión depende de las operaciones que realice el usuario, ya que el menú puede ejecutarse varias veces. La carga inicial normalmente tiene una complejidad de `O(n log n)`, mientras que en el peor caso puede llegar a `O(n²)` debido a las inserciones en un ABB completamente desbalanceado.
-
-Por lo tanto, considerando el peor caso de las operaciones principales utilizadas en BasketStats, la complejidad dominante puede llegar a ser `O(n²)`.
-
-Considero que desarrollé este criterio porque puedo analizar las diferentes funciones del programa y explicar cómo cada una influye en su complejidad general.
+Considero que desarrollé este criterio porque puedo utilizar los análisis realizados anteriormente para determinar el costo de las funciones completas del programa y explicar su complejidad general.
 
 ### SICT0302: Toma decisiones
 
@@ -284,6 +280,6 @@ Considero que BasketStats genera valor para un usuario final porque permite orga
 
 #### Cumple con las pautas éticas institucionales y no utiliza IA para sustituir el proceso de aprendizaje.
 
-Durante el desarrollo del proyecto trabajé con los algoritmos y estructuras vistos durante el curso y fui revisando el funcionamiento de cada parte del programa.
+Durante todo el curso estuve en cada parte del proyecto trabajando con los algoritmos y estructuras vistos durante el curso y fui revisando el funcionamiento de cada parte del programa.
 
-Las herramientas de apoyo utilizadas durante el desarrollo sirvieron para revisar, organizar y comprender mejor el proyecto, sin sustituir el aprendizaje de los temas trabajados durante el curso.
+Las herramientas de apoyo utilizadas durante el desarrollo sirvieron para revisar, organizar y comprender mejor el proyecto, sin sustituir mi aprendizaje de los temas trabajados durante el curso.
